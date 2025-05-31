@@ -1,0 +1,548 @@
+/*----------------------------------------------------*/
+/*  Custom Styles for Jadeer Logistics
+/*----------------------------------------------------*/
+
+/* 1. Font Declarations */
+/*----------------------------------------------------*/
+@font-face {
+    font-family: 'Din Next LT Arabic';
+    src:
+         url('../fonts/DINNextLTArabic-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Optional for performance */
+  }/* For all Arabic elements */
+  [lang="ar"], :lang(ar) {
+font-family: 'Din Next LT Arabic', sans-serif;
+direction: rtl; /* Right-to-left text direction */
+}[lang="en"], :lang(en) {
+font-family: 'Din Next LT Arabic', sans-serif;
+}
+
+/* 2. Base & Language Styles */
+/*----------------------------------------------------*/
+ 
+body.rtl {
+    font-family: 'Din Next LT Arabic', sans-serif !important; /* Ensure override */
+    direction: rtl;
+}
+
+
+
+/* Override Bootstrap/theme fonts for RTL */
+body.rtl * {
+    font-family: 'Din Next LT Arabic', sans-serif !important; /* Force font on all elements in RTL */
+}
+
+/* 3. General Styles & Overrides */
+/*----------------------------------------------------*/
+@keyframes slide {
+    0% { background-position: -90px; }
+    50% { background-position: 600px; }
+    100% { background-position: 1300px; }
+}
+
+.up svg {
+    height: 2em;
+    vertical-align: -.625em;
+    color: white;
+}
+
+.up a {
+    display: block !important; /* Consider if !important is truly needed */
+}
+
+/* 4. Header Styles */
+/*----------------------------------------------------*/
+/* Add any custom header styles if needed */
+
+/* 5. Slider Styles (Revolution Slider) */
+/*----------------------------------------------------*/
+#home .rs-layer img {
+    opacity: 0.7 !important; /* Check if this can be done without !important */
+}
+
+#home .rs-layer { /* Base style for slider layers */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add subtle shadow for better readability */
+}
+
+/* RTL Slider Adjustments */
+body.rtl #home .rs-layer {
+    right: auto !important; /* Reset positioning */
+    left: auto !important;
+    text-align: right !important;
+    font-family: 'Din Next LT Arabic', sans-serif !important;
+}
+
+/* Example: Adjust specific layer positions for RTL */
+body.rtl #slider-layer-1,
+body.rtl #slider-layer-2,
+body.rtl #slider-27-slide-72-layer-1, /* Ensure all text layers are covered */
+body.rtl #slider-27-slide-72-layer-2,
+body.rtl #slider-27-slide-73-layer-1,
+body.rtl #slider-27-slide-73-layer-2 {
+    left: auto !important;
+    right: 15px !important; /* Position from the right */
+    text-align: right !important;
+}
+
+/* May need finer adjustments based on Revolution Slider's responsive settings */
+body.rtl #home [data-xy] {
+    /* transform: translateX(calc(-100% + 30px)) !important; */ /* This might overly simplify - RevSlider handles much of this. Test carefully. */
+}
+
+body.rtl #home [data-x][data-hoffset] {
+   /* left: auto !important; */
+   /* right: var(--x-offset) !important; */ /* RevSlider might handle offset direction automatically */
+}
+
+body.rtl .rs-slide {
+    direction: rtl; /* Ensure slide content flows RTL */
+}
+
+
+/* 6. Service Section Styles */
+/*----------------------------------------------------*/
+.ft-service-list {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ft-service-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ft-service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.ft-service-item .ft-service-icon { /* More specific selector */
+    border: 10px solid #552b9d;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fff;
+    flex-shrink: 0;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    color: #552b9d;
+    transition: transform 0.3s ease;
+}
+.ft-service-item:hover .ft-service-icon {
+    transform: scale(1.1);
+}
+
+.ft-service-details h3 {
+    color: #552b9d;
+    margin-top: 0; /* Reset margin */
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.ft-service-details ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0; /* Reset margin */
+}
+
+.ft-service-details li {
+    margin-bottom: 10px; /* Increased spacing */
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.6;
+}
+
+
+
+/* Service Section RTL */
+body.rtl .ft-service-item {
+    text-align: right;
+}
+body.rtl .ft-service-item .ft-service-icon {
+    margin-right: 0;
+    margin-left: 30px;
+}
+body.rtl .ft-service-details {
+    text-align: right;
+}
+body.rtl .ft-service-details ul {
+    padding-left: 0;
+    padding-right: 0; /* Reset padding */
+}
+body.rtl .ft-service-details li {
+    padding-left: 0;
+    padding-right: 25px;
+}
+body.rtl .ft-service-details li::before {
+    left: auto;
+    right: 0;
+}
+
+/* Service Section Responsive */
+@media (max-width: 767px) {
+    .ft-service-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .ft-service-item .ft-service-icon {
+        margin: 0 0 20px 0 !important; /* Override RTL margin */
+    }
+    body.rtl .ft-service-item {
+        text-align: center; /* Center align text in RTL mobile */
+    }
+    body.rtl .ft-service-details li {
+        padding-right: 0; /* No padding needed when centered */
+        text-align: center; /* Center list items */
+    }
+     body.rtl .ft-service-details li::before {
+        display: none; /* Optionally hide icons in mobile center view */
+    }
+     .ft-service-details li {
+        padding-left: 0; /* No padding needed when centered */
+        text-align: center; /* Center list items */
+    }
+     .ft-service-details li::before {
+         display: none; /* Optionally hide icons in mobile center view */
+    }
+}
+
+
+/* 7. Project/Case Study Section Styles */
+/*----------------------------------------------------*/
+.ft-project-itembox .ft-project-text {
+    /* Styles from original CSS */
+    left: 17.5%; /* Example adjustment if needed */
+}
+.ft-case-study-text .list-cus li::before {
+    /* Ensure consistent list styling */
+    content: "\f0da"; /* Font Awesome angle-right */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: #552b9d;
+    font-size: 14px;
+}
+.ft-case-study-text .list-cus li {
+     padding-left: 20px;
+     position: relative;
+     margin-bottom: 8px;
+}
+.ft-case-study-text ul.list-cus {
+    padding-left: 0;
+    list-style: none;
+}
+
+/* Project Section RTL */
+body.rtl .ft-section-title .sub-title::before {
+    right: 0;
+    left: auto;
+}
+body.rtl .ft-section-title .sub-title::after {
+    left: 0;
+    right: auto;
+}
+body.rtl .ft-case-study-text {
+    text-align: right;
+}
+body.rtl .ft-case-study-text ul.list-cus {
+    padding-right: 0;
+}
+body.rtl .ft-case-study-text .list-cus li {
+    padding-left: 0;
+    padding-right: 20px;
+}
+body.rtl .ft-case-study-text .list-cus li::before {
+    left: auto;
+    right: 0;
+    content: "\f0d9"; /* Font Awesome angle-left for RTL */
+}
+
+/* Project Section Responsive */
+@media screen and (max-width: 991px) {
+    .slick-current.slick-center .ft-project-itembox .ft-project-text {
+        position: inherit; /* Reset position */
+    }
+}
+@media screen and (max-width: 1024px) {
+    .ft-project-itembox .ft-project-text {
+        left: 10%; /* Adjust as needed */
+        right: 10%;
+        width: 80%;
+    }
+    body.rtl .ft-project-itembox .ft-project-text {
+         left: 10%;
+         right: 10%;
+    }
+}
+
+/* 8. Why Choose Us Section Styles */
+/*----------------------------------------------------*/
+.ft-why-choose-section::before { /* LTR Background Split */
+    top: 0;
+    left: 0; /* Changed from right */
+    width: 50.7%;
+    z-index: -1; /* Ensure it's behind content */
+    content: "";
+    height: 100%;
+    position: absolute;
+    background-color: #fff; /* Left side background */
+}
+.ft-why-choose-section::after { /* LTR Background Split - Right Side (covered by image) */
+    /* Not strictly needed if background image covers it */
+    top: 0;
+    right: 0;
+    width: 49.3%; /* Remaining width */
+    z-index: -2; /* Further behind */
+    content: "";
+    height: 100%;
+    position: absolute;
+     /* background-color: #f8f9fa; Example right side color if needed */
+}
+
+/* Why Choose Us RTL */
+body.rtl .ft-why-choose-section::before { /* RTL: Right side background (White) */
+    left: auto;
+    right: 0;
+    /* background-color: #fff; */ /* Already set */
+}
+body.rtl .ft-why-choose-section::after { /* RTL: Left side background (Covered by Image) */
+    right: auto;
+    left: 0;
+    width: 49.3%;
+    /* background-color: #f8f9fa; */
+}
+
+body.rtl .ft-why-choose-text-area {
+    text-align: right;
+}
+body.rtl .ft-why-choose-feature-item.d-flex.align-items-center {
+    flex-direction: row-reverse;
+}
+body.rtl .ft-why-choose-feature-text.headline.pera-content {
+    margin-right: 25px; /* Swapped margins */
+    margin-left: 0;
+    text-align: right;
+}
+
+/* 9. Team/Certificates Section Styles */
+/*----------------------------------------------------*/
+/* Team Section RTL */
+body.rtl .ft-team-text-area {
+    text-align: right;
+}
+
+/* 10. Testimonial/Client Section Styles */
+/*----------------------------------------------------*/
+.ft-testimonial-slider-area .slick-slide {
+    margin: 0 15px; /* Adjust spacing between logos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Set a fixed height for alignment */
+}
+.ft-testimonial-slider-area .slick-slide img {
+
+    max-width: 90%;
+    width: auto;
+    height: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.ft-testimonial-slider-area .slick-slide:hover img {
+    opacity: 1;
+}
+
+/* Testimonial RTL */
+body.rtl .ft-testimonial-slider-area {
+    /* Slick slider usually handles RTL direction via its 'rtl: true' option in JS */
+    /* direction: ltr; */ /* Keep LTR if JS handles RTL well, otherwise set to RTL */
+}
+
+/* 11. Contact Section Styles */
+/*----------------------------------------------------*/
+/* Contact Section RTL */
+body.rtl .ft-contact-content .ft-section-title.headline.pera-content {
+    text-align: right;
+}
+body.rtl .ft-contact-form-wrapper form {
+    direction: rtl;
+}
+body.rtl input[type="text"],
+body.rtl input[type="email"],
+body.rtl input[type="tel"],
+body.rtl textarea {
+    text-align: right;
+}
+body.rtl ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    text-align: right;
+    opacity: 1; /* Firefox */
+}
+body.rtl :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    text-align: right;
+}
+body.rtl ::-ms-input-placeholder { /* Microsoft Edge */
+    text-align: right;
+}
+
+/* 12. Footer Styles */
+/*----------------------------------------------------*/
+.ft-footer-section {
+    color: #ffffff; /* Default white text for footer */
+}
+.ft-footer-section .widget-title {
+    color: #ffffff !important; /* Ensure title is white */
+    margin-bottom: 25px;
+}
+.ft-footer-section a {
+    color: #e0e0e0; /* Slightly off-white for links */
+    transition: color 0.3s ease;
+}
+.ft-footer-section a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+.ft-footer-section .menu-widget ul {
+    padding-left: 0; /* Remove default padding */
+    list-style: none;
+}
+.ft-footer-section .menu-widget ul li {
+    margin-bottom: 12px;
+}
+.ft-footer-section .gallery-widget ul {
+    padding-left: 0;
+    list-style: none;
+    margin: -5px; /* Counteract padding/margin on items */
+}
+.ft-footer-section .gallery-widget ul li {
+    width: 30%; /* Adjust size */
+    margin: 1.5%; /* Adjust spacing */
+    overflow: hidden;
+    border-radius: 4px;
+}
+.ft-footer-section .gallery-widget ul li img {
+     width: 100%;
+     height: 70px; /* Fixed height for gallery thumbs */
+     object-fit: cover; /* Ensure image covers the area */
+     transition: transform 0.3s ease;
+}
+.ft-footer-section .gallery-widget ul li a:hover img {
+    transform: scale(1.1);
+}
+
+.ft-footer-widget .ft-btn a.footer-cta-btn {
+    color: white;
+    background-color: #e91e63;
+    border-radius: 6px;
+    text-decoration: none;
+    padding: 10px 20px; /* Adjust padding */
+    text-align: center;
+    display: inline-block; /* Or block */
+    transition: background-color 0.3s ease;
+}
+.ft-footer-widget .ft-btn a.footer-cta-btn:hover {
+     background-color: #c2185b; /* Darker pink on hover */
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start; /* Default LTR alignment */
+    margin-top: 15px; /* Space above icons */
+}
+.footer-social-icons a {
+    width: 40px;
+    height: 40px;
+    background-color: #e91e63;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.footer-social-icons a:hover {
+    background-color: #c2185b;
+    transform: translateY(-2px);
+}
+.footer-social-icons i {
+    font-size: 20px; /* Adjust icon size */
+}
+.footer-social-icons img { /* Styles for SVG/img icons */
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1); /* Make icons white */
+}
+
+.ft-footer-copywrite-1 {
+    color: #e0e0e0 !important; /* Ensure copyright text color */
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 40px;
+}
+
+/* Footer RTL */
+body.rtl .ft-footer-widget.ul-li-block.headline.pera-content {
+     text-align: right;
+}
+/* Align the first widget content (logo, button, icons) to the right */
+body.rtl .ft-footer-widget.d-flex.flex-column {
+    align-items: flex-end !important;
+}
+body.rtl .footer-social-icons {
+    justify-content: flex-end; /* Align icons to the right */
+}
+body.rtl .menu-widget ul,
+body.rtl .gallery-widget ul {
+    padding-right: 0; /* Reset padding */
+}
+body.rtl .ft-footer-copywrite-1 {
+    text-align: right !important; /* Align copyright text right */
+}
+
+/* 13. Responsive Adjustments (General) */
+/*----------------------------------------------------*/
+
+/* Example: Header adjustments for RTL */
+body.rtl .ft-header-cta-btn {
+    margin-left: 0;
+    margin-right: 15px; /* Space between buttons in RTL */
+}
+body.rtl .ft-header-cta-btn.hidebtn {
+    margin-right: 0;
+}
+body.rtl .ft-brand-logo {
+    margin-right: 0; /* Reset default auto margins */
+    margin-left: 5px; /* Match LTR margin but on opposite side */
+}
+body.rtl .ft-header-content {
+    /* flex-direction: row-reverse; */ /* Handled by general RTL direction? Test. */
+}
+body.rtl .ft-main-navigation {
+   /* Potentially adjust menu item floats/margins if needed */
+}
+
+/* Example: Adjust container padding for full-width header */
+@media (min-width: 1200px) {
+  .container-fluid.px-0 .ft-header-content {
+    padding-left: 15px; /* Add padding inside the container */
+    padding-right: 15px;
+  }
+  body.rtl .container-fluid.px-0 .ft-header-content {
+     padding-left: 15px;
+     padding-right: 15px; /* Keep padding consistent */
+  }
+}
